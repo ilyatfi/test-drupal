@@ -9,7 +9,7 @@
 
 # Ignore core when managing all of a project's dependencies with Composer
 # including Drupal core.
-# core
+web/core
 
 # Ignore dependencies that are managed with Composer.
 # Generally you should only ignore the root vendor directory. It's important
@@ -40,3 +40,11 @@ web/sites/simpletest
 
 # Ignore multi-site test environment.
 # simpletest
+
+web/sites
+web/INSTALL.txt
+web/README.txt
+web/example.gitignore
+
+# /web/modules/contrib
+# /web/themes/contrib
