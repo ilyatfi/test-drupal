@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function events_module_theme() {
+  return [
+    'views_view_unformatted__events__page_1' => [
+      'template' => 'views-view-unformatted--events--page-1',
+      'base hook' => 'view'
+    ],
+    'views_view_unformatted__frontpage__page_1' => [
+      'template' => 'views-view-unformatted--frontpage--page-1',
+      'base hook' => 'view'
+    ],
+  ];
+}
+
+function events_module_preprocess_views_view_unformatted(&$variables) {
+
+    $route_name = \Drupal::routeMatch()->getRouteName();
+
+    if($route_name == 'view.events.page_1' || $route_name == "view.frontpage.page_1")
+    {
+        $variables['#attached']['library'][] = 'events_module/custom';
+    }
+}
