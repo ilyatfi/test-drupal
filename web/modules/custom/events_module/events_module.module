@@ -13,6 +13,10 @@ function events_module_theme() {
       'template' => 'views-view-unformatted--frontpage--page-1',
       'base hook' => 'view'
     ],
+    'views_view__frontpage__page_1' => [
+      'template' => 'views-view--frontpage--page-1',
+      'base hook' => 'view'
+    ],
   ];
 }
 
@@ -23,5 +27,14 @@ function events_module_preprocess_views_view_unformatted(&$variables) {
     if($route_name == 'view.events.page_1' || $route_name == "view.frontpage.page_1")
     {
         $variables['#attached']['library'][] = 'events_module/custom';
+    }
+}
+
+function events_module_preprocess_views_view(&$variables) {
+
+    if ($variables['id'] == 'frontpage')
+    {
+        $home_events_text = \Drupal::config('events_module.settings')->get('home_events_text');
+        $variables['home_events_text'] = $home_events_text;
     }
 }
