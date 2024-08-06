@@ -1,0 +1,5 @@
+name: Events Module
+type: module
+description: Module for handling events.
+package: custom
+core_version_requirement: ^11
