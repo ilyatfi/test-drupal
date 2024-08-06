@@ -37,4 +37,10 @@ function events_module_preprocess_views_view(&$variables) {
         $home_events_text = \Drupal::config('events_module.settings')->get('home_events_text');
         $variables['home_events_text'] = $home_events_text;
     }
+
+    if ($variables['id'] == 'events')
+    {
+        $events_no_results_text = \Drupal::config('events_module.settings')->get('events_no_results_text');
+        $variables['empty'] = $events_no_results_text;
+    }
 }
