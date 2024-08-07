@@ -1,3 +1,75 @@
 .home-events-text > * {
     color: red;
 }
+
+.event-card {
+    background: rgba(54, 132, 177, 0.07);
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.event-card:hover .views-field-title a {
+    background:
+        linear-gradient(
+        to right,
+        rgba(100, 200, 200, 1),
+        rgba(100, 200, 200, 1)
+        ),
+        linear-gradient(
+        to right,
+        rgba(255, 0, 0, 1),
+        rgba(255, 0, 180, 1),
+        rgba(0, 100, 200, 1)
+    );
+    background-size: 100% 3px, 0 3px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+
+.event-card .views-field-title a {
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+}
+
+.event-card .views-field-title a:hover {
+    background-size: 0 3px, 100% 3px;
+}
+
+.event-card .views-field {
+    padding: 1em 0;
+}
+
+.event-card .views-field:not(:last-of-type) {
+    padding: 1em 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.event-card .views-field-field-date {
+    text-align: center;
+}
+
+.event-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 43.75rem) {
+    .view-content.event-cards-container {
+        gap: 1em;
+    }
+}
+
+@media (max-width: 56.25rem) {
+    .view-content.event-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 35.60rem) {
+    .view-content.event-cards-container {
+        grid-template-columns: 1fr;
+    }
+}

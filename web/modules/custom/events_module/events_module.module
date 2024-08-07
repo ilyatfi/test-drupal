@@ -17,6 +17,10 @@ function events_module_theme() {
       'template' => 'views-view--frontpage--page-1',
       'base hook' => 'view'
     ],
+    'views_view__events__page_1' => [
+      'template' => 'views-view--events--page-1',
+      'base hook' => 'view'
+    ],
   ];
 }
 
