@@ -3,6 +3,8 @@
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Tests\Component\Foo\FunctionalJavascriptTest;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_theme().
@@ -41,7 +43,8 @@ function events_module_preprocess_views_view_unformatted(&$variables) {
 
     if($route_name == 'view.events.page_1' || $route_name == "view.frontpage.page_1")
     {
-        $variables['#attached']['library'][] = 'events_module/custom';
+      $variables['#attached']['library'][] = 'events_module/datepicker';
+      $variables['#attached']['library'][] = 'events_module/custom';
     }
 }
 
@@ -95,14 +98,23 @@ function starts_with_upper($str) {
   return mb_strtolower($chr, "UTF-8") != $chr;
 }
 
-// function events_module_preprocess_fieldset(&$variables) {
-//   dd($variables['element']['#id']);
-// }
-
 // function events_module_query_alter(AlterableInterface $query) {
-//   if ($query->hasTag('views')) {
+//   if ($query->hasTag('node_access')) {
 //     dump($query);
 //   }
+// }
+
+/**
+ * Implements hook_views_query_alter().
+ */
+// function events_module_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+
+//   if ($view->id() == 'events' && $_GET['field_date_value_1'] != []) {
+    
+//     unset($query->where[1]['conditions'][2]);
+//     dump($_GET);
+//   }
+
 // }
 
 /*
@@ -113,6 +125,5 @@ function events_module_theme_suggestions_fieldset_alter(array &$suggestions, arr
 }
 
 // to do -
-// pievienot library notikumu skataa
 // lai situacijas, kad filtree peec datuma, atrod arii pagaatnes notikums (hook_query_alter??)
 // research drupal settings

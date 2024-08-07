@@ -4,3 +4,7 @@ custom:
       css/style.css: {}
   js:
     js/script.js: {}
+
+datepicker:
+  js:
+    https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js: { type: external, minified: true }
