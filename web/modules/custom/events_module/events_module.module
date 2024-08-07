@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Tests\Component\Foo\FunctionalJavascriptTest;
+
 /**
  * Implements hook_theme().
  */
@@ -24,6 +27,9 @@ function events_module_theme() {
   ];
 }
 
+/**
+ * Implements template_preprocess_views_view_unformatted().
+ */
 function events_module_preprocess_views_view_unformatted(&$variables) {
 
     $route_name = \Drupal::routeMatch()->getRouteName();
@@ -34,6 +40,9 @@ function events_module_preprocess_views_view_unformatted(&$variables) {
     }
 }
 
+/**
+ * Implements template_preprocess_views_view().
+ */
 function events_module_preprocess_views_view(&$variables) {
 
     if ($variables['id'] == 'frontpage')
@@ -48,3 +57,40 @@ function events_module_preprocess_views_view(&$variables) {
         $variables['empty'] = $events_no_results_text;
     }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function events_module_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  if ($form_id == 'node_event_form' || $form_id == 'node_event_edit_form') {
+    $form['#validate'][] = 'events_module_node_form_validate';
+  }
+}
+
+/**
+ * Validation form for the waarde_voorwerp form.
+ *
+ * Check if event title starts with the capital letter
+ */
+function events_module_node_form_validate($form, FormStateInterface $form_state) {
+
+  $title = $form_state->getValue('title')[0]['value']; 
+
+  if (!starts_with_upper($title)) {
+    $form_state->setErrorByName('title', t('Notikuma nosaukumam jāsākas ar lielo burtu'));
+  } 
+}
+
+/**
+ * Check if given string starts with the capital letter
+ */
+function starts_with_upper($str) {
+  $chr = mb_substr ($str, 0, 1, "UTF-8");
+  return mb_strtolower($chr, "UTF-8") != $chr;
+}
+
+// to do -
+// pievienot library notikumu skataa
+// lai situacijas, kad filtree peec datuma, atrod arii pagaatnes notikums (hook_query_alter??)
+// research drupal settings
