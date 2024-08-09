@@ -41,6 +41,10 @@ function events_module_theme() {
       'template' => 'block--footer-top--id--olivero-views-block--contacts-block-1',
       'base hook' => 'block'
     ],
+    'node__1__full' => [
+      'template' => 'node--1--full',
+      'base hook' => 'node'
+    ],
   ];
 }
 
@@ -152,6 +156,19 @@ function events_module_preprocess_field(&$variables) {
 
   if ($route_name == 'entity.node.canonical') {
 
+    $variables['#attached']['library'][] = 'events_module/custom';
+  }
+}
+
+/*
+ * Implements template_preprocess_node()
+ */
+function events_module_preprocess_node(&$variables) {
+  
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  
+  if ($route_name == "entity.node.canonical") {
+    
     $variables['#attached']['library'][] = 'events_module/custom';
   }
 }
