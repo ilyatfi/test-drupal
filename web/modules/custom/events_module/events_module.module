@@ -37,6 +37,10 @@ function events_module_theme() {
       'template' => 'paragraph--block-with-text-and-image--default',
       'base hook' => 'paragraph'
     ],
+    'field__paragraph__field_iframe__iframe' => [
+      'template' => 'field--paragraph--field-iframe--iframe',
+      'base hook' => 'field'
+    ],
   ];
 }
 
@@ -138,7 +142,18 @@ function events_module_preprocess_paragraph__block_with_text_and_image(&$variabl
   
   $route_name = \Drupal::routeMatch()->getRouteName();
 
-  // dump($variables['content']['field_link_to_content'][0]['#url']);
+  if ($route_name == 'entity.node.canonical') {
+
+    $variables['#attached']['library'][] = 'events_module/custom';
+  }
+}
+
+/*
+ * Implements events_module_preprocess_field()
+ */
+function template_preprocess_field(&$variables) {
+  
+  $route_name = \Drupal::routeMatch()->getRouteName();
 
   if ($route_name == 'entity.node.canonical') {
 
