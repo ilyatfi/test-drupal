@@ -41,6 +41,10 @@ function events_module_theme() {
       'template' => 'field--paragraph--field-iframe--iframe',
       'base hook' => 'field'
     ],
+    'block__footer_top__id__olivero_views_block__contacts_block_1' => [
+      'template' => 'block--footer-top--id--olivero-views-block--contacts-block-1',
+      'base hook' => 'block'
+    ],
   ];
 }
 
@@ -113,26 +117,21 @@ function starts_with_upper($str) {
  */
 function events_module_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
 
-  if ($view->id() == 'events' && $_GET != []) {
+  $request = \Drupal::request()->query->all();
 
-    if ($_GET['field_date_value_1'] != "") {
+  if ($view->id() == 'events' && $request != []) {
+
+    if ($request['field_date_value_1'] != "") {
 
       // unset this input default query rule
       unset($query->where[1]['conditions'][3]);
 
-      $dateRange = explode(" - ", $_GET['field_date_value_1']);
+      $dateRange = explode(" - ", $request['field_date_value_1']);
 
       // override minimum date query rule 
       $query->where[1]['conditions'][2]['field'] = "DATE_FORMAT(node__field_date.field_date_value, '%Y-%m-%d') BETWEEN DATE_FORMAT('{$dateRange[0]}', '%Y-%m-%d') AND DATE_FORMAT('{$dateRange[1]}', '%Y-%m-%d')";
     }
   }
-}
-
-/*
- * Implements hook_theme_suggestions_HOOK_alter()
- */
-function events_module_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
-  $suggestions[] = 'fieldset__' . $variables['element']['#parents'][0];
 }
 
 /*

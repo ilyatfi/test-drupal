@@ -56,19 +56,19 @@
     grid-auto-rows: auto;
 }
 
-@media (min-width: 43.75rem) {
+@media (min-width: 700px) {
     .view-content.event-cards-container {
         gap: 1em;
     }
 }
 
-@media (max-width: 56.25rem) {
+@media (max-width: 900px) {
     .view-content.event-cards-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 35.60rem) {
+@media (max-width: 570px) {
     .view-content.event-cards-container {
         grid-template-columns: 1fr;
     }
@@ -103,7 +103,7 @@
     object-fit: cover;
 }
 
-@media (min-width: 35.60rem) {
+@media (min-width: 570px) {
     .paragraph_block .image-container img {
         min-width: 220px;
         height: 110px;
@@ -150,3 +150,25 @@
     width: 100%;
     height: 100%;
   }
+
+.contacts-block .block__title {
+    font-size: 1.2em;
+    font-weight: 900;
+    margin-bottom: ;
+}
+
+.contacts-block .views-row {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.contacts-block .views-field-field-phone ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contacts-block .views-field-view-node {
+    margin-top: 2em;
+}
