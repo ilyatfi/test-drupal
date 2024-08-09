@@ -153,14 +153,15 @@
 
 .contacts-block .block__title {
     font-size: 1.2em;
-    font-weight: 900;
-    margin-bottom: ;
+    font-weight: 600;
+    margin-bottom: 2em;
 }
 
 .contacts-block .views-row {
     display: flex;
     flex-direction: column;
     gap: .5em;
+    color: rgb(155, 155, 155);
 }
 
 .contacts-block .views-field-field-phone ul {
@@ -171,4 +172,22 @@
 
 .contacts-block .views-field-view-node {
     margin-top: 2em;
+}
+
+.contacts-block .views-field-view-node .field-content {
+    display: block;
+    width: 200px;
+    height: 45px;
+}
+
+.contacts-block .views-field-view-node a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: rgb(106, 107, 110);
+    text-decoration: none;
+    color: white;
 }
