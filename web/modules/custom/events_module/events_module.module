@@ -149,9 +149,9 @@ function events_module_preprocess_paragraph__block_with_text_and_image(&$variabl
 }
 
 /*
- * Implements events_module_preprocess_field()
+ * Implements template_preprocess_field()
  */
-function template_preprocess_field(&$variables) {
+function events_module_preprocess_field(&$variables) {
   
   $route_name = \Drupal::routeMatch()->getRouteName();
 
