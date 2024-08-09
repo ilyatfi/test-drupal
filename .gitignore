@@ -46,5 +46,5 @@ web/INSTALL.txt
 web/README.txt
 web/example.gitignore
 
-# /web/modules/contrib
+/web/modules/contrib
 # /web/themes/contrib
