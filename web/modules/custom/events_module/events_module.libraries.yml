@@ -12,3 +12,14 @@ custom:
 datepicker:
   js:
     https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js: { type: external, minified: true }
+
+easepick:
+  js:
+    js/easepick.js: {}
+
+modal:
+  css:
+    theme:
+      css/modal.css: {}
+  js:
+    js/modal.js: {}

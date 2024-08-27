@@ -99,18 +99,18 @@
   </header>
   <div{{ content_attributes.addClass('node__content', layout) }}>
     {# Comments not part of content, so they won't inherit .text-content styles. #}
-    
-    <button class="pop-up-button" id="magic-btn">Click Me</button>
 
-    <a class="use-ajax" 
-      data-dialog-options="{&quot;width&quot;:400}" 
-      data-dialog-type="modal" 
-      href="/node/2">
-      Pēdēja vasaras diena
-    </a>
+    <p>
+      <a class="use-ajax" 
+        data-dialog-options="{&quot;width&quot;:400}" 
+        data-dialog-type="modal" 
+        href="/node/2">
+        Pēdēja vasaras diena (Using Ajax)
+      </a>
+    </p>
 
     <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Open Modal</button>
+    <button id="myBtn" class="pop-up-button">Open Modal</button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">

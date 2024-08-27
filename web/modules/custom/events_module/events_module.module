@@ -58,6 +58,7 @@ function events_module_preprocess_views_view_unformatted(&$variables) {
     if($route_name == 'view.events.page_1' || $route_name == "view.frontpage.page_1")
     {
       $variables['#attached']['library'][] = 'events_module/datepicker';
+      $variables['#attached']['library'][] = 'events_module/easepick';
       $variables['#attached']['library'][] = 'events_module/custom';
     }
 }
@@ -166,9 +167,10 @@ function events_module_preprocess_field(&$variables) {
 function events_module_preprocess_node(&$variables) {
   
   $route_name = \Drupal::routeMatch()->getRouteName();
-  
-  if ($route_name == "entity.node.canonical") {
+
+  if ($variables['label']['#bundle'] == "event") {
     
+    $variables['#attached']['library'][] = 'events_module/modal';
     $variables['#attached']['library'][] = 'events_module/custom';
   }
 }
