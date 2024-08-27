@@ -165,14 +165,11 @@ function events_module_preprocess_field(&$variables) {
  * Implements template_preprocess_node()
  */
 function events_module_preprocess_node(&$variables) {
-  
-  $route_name = \Drupal::routeMatch()->getRouteName();
 
   if ($variables['label']['#bundle'] == "event") {
     
     $variables['#attached']['library'][] = 'events_module/modal';
     $variables['#attached']['library'][] = 'events_module/custom';
+    $variables['passed_data'] = 'Here is some text passed from the hook at .module file';
   }
-
-  $variables['passed_data'] = 'Here is some text passed from the hook at .module file';
 }
