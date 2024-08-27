@@ -101,16 +101,16 @@
     {# Comments not part of content, so they won't inherit .text-content styles. #}
 
     <p>
-      <a class="use-ajax" 
+      <a class="use-ajax pop-up-button" 
         data-dialog-options="{&quot;width&quot;:400}" 
         data-dialog-type="modal" 
         href="/node/2">
-        Pēdēja vasaras diena (Using Ajax)
+        Ajax Modal (Parāda notikumu 'Pēdēja vasaras diena')
       </a>
     </p>
 
     <!-- Trigger/Open The Modal -->
-    <button id="myBtn" class="pop-up-button">Open Modal</button>
+    <button id="myBtn" class="pop-up-button">Custom JS Modal</button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -119,14 +119,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="close">&times;</span>
-          <h2>Modal Header</h2>
+          <h2>{{ label }}</h2>
         </div>
         <div class="modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...</p>
+          <p>{{ passed_data }}</p>
         </div>
         <div class="modal-footer">
-          <h3>Modal Footer</h3>
+          <h3>{{ content.field_location }}</h3>
         </div>
       </div>
       

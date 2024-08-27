@@ -173,4 +173,6 @@ function events_module_preprocess_node(&$variables) {
     $variables['#attached']['library'][] = 'events_module/modal';
     $variables['#attached']['library'][] = 'events_module/custom';
   }
+
+  $variables['passed_data'] = 'Here is some text passed from the hook at .module file';
 }
