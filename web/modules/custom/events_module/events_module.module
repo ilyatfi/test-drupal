@@ -135,7 +135,7 @@ function events_module_views_query_alter(ViewExecutable $view, QueryPluginBase $
   }
 }
 
-/*
+/**
  * Implements template_preprocess_paragraph__PARAGRAPH_TYPE()
  */
 function events_module_preprocess_paragraph__block_with_text_and_image(&$variables) {
@@ -148,7 +148,7 @@ function events_module_preprocess_paragraph__block_with_text_and_image(&$variabl
   }
 }
 
-/*
+/**
  * Implements template_preprocess_field()
  */
 function events_module_preprocess_field(&$variables) {
@@ -161,15 +161,29 @@ function events_module_preprocess_field(&$variables) {
   }
 }
 
-/*
+/**
  * Implements template_preprocess_node()
  */
 function events_module_preprocess_node(&$variables) {
 
-  if ($variables['label']['#bundle'] == "event") {
-    
-    $variables['#attached']['library'][] = 'events_module/modal';
-    $variables['#attached']['library'][] = 'events_module/custom';
-    $variables['passed_data'] = 'Here is some text passed from the hook at .module file';
+  if ($variables['label']['#bundle'] != "event") {
+    return;
   }
+
+  if($contacts = $variables['node']->field_contacts->entity) {
+    $phoneNums = [];
+    foreach ($contacts->field_phone->getIterator() as $phoneNum) {
+      $phoneNums[] = $phoneNum->value;
+    }
+    
+    $variables['#attached']['drupalSettings']['modalData'] = [
+      'title' => $contacts->getTitle(),
+      'address' =>  $contacts->field_address->getString(),
+      'email' => $contacts->field_email->getString(),
+      'phoneNums' => $phoneNums,
+    ];
+  }
+
+  $variables['#attached']['library'][] = 'events_module/modal';
+  $variables['#attached']['library'][] = 'events_module/custom';
 }

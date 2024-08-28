@@ -23,3 +23,7 @@ modal:
       css/modal.css: {}
   js:
     js/modal.js: {}
+  dependencies:    
+    - core/jquery
+    - core/drupal
+    - core/once
